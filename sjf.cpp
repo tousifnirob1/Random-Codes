@@ -36,15 +36,14 @@ int main() {
     // Sort processes by arrival time
     sort(p, p + n, compareAT);
 
-    int time = 0; // Current time tracker
-    int completed = 0; // Number of completed processes
+    int time = 0; 
+    int completed = 0; 
     bool visited[n] = {false};
 
     while (completed < n) {
         int idx = -1;
         int minBT = 1e9;
 
-        // Find the process with the shortest burst time that has arrived
         for (int i = 0; i < n; i++) {
             if (!visited[i] && p[i].at <= time && p[i].bt < minBT) {
                 minBT = p[i].bt;
@@ -53,7 +52,7 @@ int main() {
         }
 
         if (idx == -1) {
-            time++; // No process is ready, so increase time
+            time++; 
         } else {
             // Process execution
             p[idx].ct = time + p[idx].bt;
